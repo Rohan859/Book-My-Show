@@ -13,7 +13,7 @@ public class MovieController
     @Autowired
     private MovieService movieService;
 
-    @PostMapping("/add")
+    @PostMapping("/addMovie")
     public String addMovie(@RequestBody Movie movie)
     {
         String rseult=movieService.addMovie(movie);

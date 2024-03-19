@@ -2,29 +2,33 @@ package com.project.bookmyshow.bookmyshow.Entities;
 
 import com.project.bookmyshow.bookmyshow.Enum.SeatType;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "theatre_seat")
-@Getter
-@Setter
-@AllArgsConstructor
+@Table(name = "show_seat")
+@Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-
-public class TheatreSeat
+public class ShowSeat
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer theatreSeatId;
+    private Integer showSeatId;
+
+    private String seatNo;
 
     @Enumerated(value = EnumType.STRING)
     private SeatType seatType;
 
-    private String seatNo;
+    private Integer price;
 
+    private boolean isAvailable;
 
     @JoinColumn
     @ManyToOne
-    private Theatre theatre;
+    private Show show;
 }

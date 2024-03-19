@@ -3,6 +3,8 @@ package com.project.bookmyshow.bookmyshow.Entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "theatres")
 @Getter
@@ -22,6 +24,8 @@ public class Theatre
 
     private int noOfScreens;
 
+    @OneToMany(mappedBy = "theatre",cascade = CascadeType.ALL)
+    List<TheatreSeat>theatreSeatList;
 
 //    @JoinColumn
 //    @OneToMany
