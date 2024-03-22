@@ -6,6 +6,8 @@ import com.project.bookmyshow.bookmyshow.Repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MovieService
 {
@@ -28,5 +30,12 @@ public class MovieService
         movieRepository.save(movie);
 
         return "Successfully updated the attribue for movie rating and duration";
+    }
+
+
+    public List<Movie> getAllMovie()
+    {
+        List<Movie>movieList=movieRepository.findAll();
+        return movieList;
     }
 }

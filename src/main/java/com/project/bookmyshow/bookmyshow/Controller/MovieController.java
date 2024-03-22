@@ -6,6 +6,8 @@ import com.project.bookmyshow.bookmyshow.Service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/movie")
 public class MovieController
@@ -25,5 +27,12 @@ public class MovieController
     {
         String result=movieService.updateMovieAttribute(updateMovieRequest);
         return result;
+    }
+
+    @GetMapping("/getAllMovie")
+    public List<Movie> getAllMovie()
+    {
+        List<Movie>movieList=movieService.getAllMovie();
+        return movieList;
     }
 }
