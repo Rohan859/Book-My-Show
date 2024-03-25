@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Repository
 public interface ShowRepository extends JpaRepository<Show,Integer>
@@ -20,4 +21,6 @@ public interface ShowRepository extends JpaRepository<Show,Integer>
                                                                 Movie movie,
                                                                 Theatre theatre);
 
+    @Query(nativeQuery = true, value = "select * from shows where theatre_theatre_id = :theatreId")
+    public List<Show>getShowByTheatre(Integer theatreId);
 }

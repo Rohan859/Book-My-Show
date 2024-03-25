@@ -35,4 +35,18 @@ public class MovieController
         List<Movie>movieList=movieService.getAllMovie();
         return movieList;
     }
+
+    @GetMapping("/getMovieListByLanguage")
+    public List<Movie>getMovieListByLanguage(@RequestParam String language)
+    {
+        List<Movie>movieList=movieService.getMovieListByLanguage(language);
+        return movieList;
+    }
+
+    @GetMapping("/getMovieListByGenre")
+    public List<Movie>getMovieListByGenre(@RequestParam String genre)
+    {
+        List<Movie>movieList=movieService.getMovieListByGenre(genre);
+        return movieList;
+    }
 }

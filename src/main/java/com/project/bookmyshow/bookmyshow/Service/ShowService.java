@@ -85,4 +85,13 @@ public class ShowService
         return "All the show seats are generated";
 
     }
+
+
+    public List<Show>getShowByTheatre(Integer theatreId)
+    {
+        List<Show>showList=showRepository.getShowByTheatre(theatreId);
+        return showList;
+    }
+
+
 }

@@ -38,4 +38,17 @@ public class MovieService
         List<Movie>movieList=movieRepository.findAll();
         return movieList;
     }
+
+    public List<Movie>getMovieListByLanguage(String language)
+    {
+        List<Movie>movieList=movieRepository.findListOfMovieByLanguage(language);
+        return movieList;
+    }
+
+
+    public List<Movie>getMovieListByGenre(String genre)
+    {
+        List<Movie>movieList=movieRepository.findListOfMoviesByGenre(genre);
+        return movieList;
+    }
 }
