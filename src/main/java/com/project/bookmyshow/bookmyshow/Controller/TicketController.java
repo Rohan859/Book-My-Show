@@ -1,15 +1,15 @@
 package com.project.bookmyshow.bookmyshow.Controller;
 
 import com.project.bookmyshow.bookmyshow.DTO.BookTicketRequest;
+import com.project.bookmyshow.bookmyshow.Entities.Movie;
 import com.project.bookmyshow.bookmyshow.Exceptions.SeatNotAvailableException;
 import com.project.bookmyshow.bookmyshow.Service.BookTicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/ticket")
@@ -30,5 +30,13 @@ public class TicketController
         {
             return new ResponseEntity("not booked "+e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+
+    @GetMapping("/getMovieListByUser")
+    public List<String> findAllMovieListByUser(@RequestParam Integer userId)
+    {
+        List<String>movieList=bookTicketService.findAllMovieListByUser(userId);
+        return movieList;
     }
 }

@@ -111,4 +111,12 @@ public class BookTicketService
 
         return "Successfully ticket got generated "+ticket.toString();
     }
+
+
+
+    public List<String> findAllMovieListByUser(Integer userId)
+    {
+        List<String>movieList=bookTicketRepository.findAllMovieListByUser(userId);
+        return movieList;
+    }
 }

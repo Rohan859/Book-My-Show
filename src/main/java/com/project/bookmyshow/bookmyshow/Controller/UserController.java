@@ -22,4 +22,7 @@ public class UserController
         String result=userService.addUser(user);
         return result;
     }
+
+
+
 }
