@@ -3,6 +3,13 @@ package com.project.bookmyshow.bookmyshow.Service;
 import com.project.bookmyshow.bookmyshow.Entities.User;
 import com.project.bookmyshow.bookmyshow.Repository.UserRepository;
 
+//import com.twilio.Twilio;
+//import com.twilio.converter.Promoter;
+//import com.twilio.rest.api.v2010.account.Message;
+//import com.twilio.type.PhoneNumber;
+//
+//import java.net.URI;
+//import java.math.BigDecimal
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -18,9 +25,7 @@ public class UserService
     @Autowired
     JavaMailSender javaMailSender;
 
-//
-//    final static String ACCOUNT_SID = "AC9e067598cbd5ba28c088407a245a42dc";
-//    final static String  AUTH_TOKEN = "2f40d6a9ecd4bd54cfe96040dbc883f6";
+
 
 
 
@@ -56,8 +61,7 @@ public class UserService
 //        Message message1 = Message.creator(
 //                        new com.twilio.type.PhoneNumber("+91"+user.getMobileNo()),
 //                        new com.twilio.type.PhoneNumber("+14434007303"),
-//                        body)
-//                .create();
+//                        body).create();
 
         return "successfully added the user with id "+user.getUserId();
     }
