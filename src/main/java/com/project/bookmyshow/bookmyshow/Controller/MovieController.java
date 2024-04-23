@@ -5,7 +5,7 @@ import com.project.bookmyshow.bookmyshow.Entities.Movie;
 import com.project.bookmyshow.bookmyshow.Service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +18,7 @@ public class MovieController
     private MovieService movieService;
 
     @PostMapping("/addMovie")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    //@PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public String addMovie(@RequestBody Movie movie)
     {
         String rseult=movieService.addMovie(movie);
@@ -26,7 +26,7 @@ public class MovieController
     }
 
     @PutMapping("/updateMovieAttribute")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    //@PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public String updateMovieAttribute(@RequestBody UpdateMovieRequest updateMovieRequest)
     {
         String result=movieService.updateMovieAttribute(updateMovieRequest);

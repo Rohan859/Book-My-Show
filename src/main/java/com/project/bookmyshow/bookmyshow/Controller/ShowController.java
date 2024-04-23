@@ -36,4 +36,19 @@ public class ShowController
         List<Show>showList=showService.getShowByTheatre(theatreId);
         return showList;
     }
+
+    @GetMapping("/NumberOfAvailableSeats")
+    public String getNumberOfAvailableSeats(Integer showId)
+    {
+        Integer ans=showService.getNumberOfAvailableSeats(showId);
+
+        if(ans==0)
+        {
+            return "No seats are available , all seats are booked";
+        }
+        else
+        {
+            return ans+" seats are available";
+        }
+    }
 }

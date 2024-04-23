@@ -2,6 +2,7 @@ package com.project.bookmyshow.bookmyshow.Service;
 
 import com.project.bookmyshow.bookmyshow.DTO.BookTicketRequest;
 import com.project.bookmyshow.bookmyshow.Entities.*;
+import com.project.bookmyshow.bookmyshow.Enum.Language;
 import com.project.bookmyshow.bookmyshow.Exceptions.SeatNotAvailableException;
 import com.project.bookmyshow.bookmyshow.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -118,5 +119,130 @@ public class BookTicketService
     {
         List<String>movieList=bookTicketRepository.findAllMovieListByUser(userId);
         return movieList;
+    }
+
+
+    public List<String>recommendation(Integer userId)
+    {
+        List<String>movieList=bookTicketRepository.findAllMovieListByUser(userId);
+
+        int freq[]=new int[10];
+        //0 for hindi, 1 for english, 2 for bengali, 3 for tamil, 4 for telegu
+        //5 for panjabi, 6 for bhojpuri, 7 for odi, 8 for marathi, 9 for malayalam
+
+
+
+        for(String movieName:movieList)
+        {
+            Movie movie=movieRepository.findMovieByMovieName(movieName);
+
+            if(movie.getLanguage()== Language.HINDI)
+            {
+                freq[0]++;
+            }
+            else if(movie.getLanguage()== Language.ENGLISH)
+            {
+                freq[1]++;
+            }
+            else if(movie.getLanguage()== Language.BENGALI)
+            {
+                freq[2]++;
+            }
+            else if(movie.getLanguage()== Language.TAMIL)
+            {
+                freq[3]++;
+            }
+            else if(movie.getLanguage()== Language.TELEGU)
+            {
+                freq[4]++;
+            }
+            else if(movie.getLanguage()== Language.PANGABI)
+            {
+                freq[5]++;
+            }
+            else if(movie.getLanguage()== Language.BHOJPURI)
+            {
+                freq[6]++;
+            }
+            else if(movie.getLanguage()== Language.ODI)
+            {
+                freq[7]++;
+            }
+            else if(movie.getLanguage()== Language.MARATHI)
+            {
+                freq[8]++;
+            }
+            else
+            {
+                freq[9]++;
+            }
+        }
+
+
+        int max=Integer.MIN_VALUE;
+        int index=-1;
+
+        for(int i=0;i<10;i++)
+        {
+            if(max<freq[i])
+            {
+                max=freq[i];
+                index=i;
+            }
+        }
+
+        if(index==0)
+        {
+            List<String>movieNames=movieRepository.getListOfMovieByLanguage("HINDI");
+            return movieNames;
+        }
+        else if(index==1)
+        {
+            List<String>movieNames=movieRepository.getListOfMovieByLanguage("ENGLISH");
+            return movieNames;
+        }
+        else if(index==2)
+        {
+            List<String>movieNames=movieRepository.getListOfMovieByLanguage("BENGALI");
+            return movieNames;
+        }
+        else if(index==3)
+        {
+            List<String>movieNames=movieRepository.getListOfMovieByLanguage("TAMIL");
+            return movieNames;
+        }
+        else if(index==4)
+        {
+            List<String>movieNames=movieRepository.getListOfMovieByLanguage("TELEGU");
+            return movieNames;
+        }
+        else if(index==5)
+        {
+            List<String>movieNames=movieRepository.getListOfMovieByLanguage("PANGABI");
+            return movieNames;
+        }
+        else if(index==6)
+        {
+            List<String>movieNames=movieRepository.getListOfMovieByLanguage("BHOJPURI");
+            return movieNames;
+        }
+        else if(index==7)
+        {
+            List<String>movieNames=movieRepository.getListOfMovieByLanguage("ODI");
+            return movieNames;
+        }
+        else if(index==8)
+        {
+            List<String>movieNames=movieRepository.getListOfMovieByLanguage("MARATHI");
+            return movieNames;
+        }
+        else
+        {
+            List<String>movieNames=movieRepository.getListOfMovieByLanguage("MALAYLAM");
+            return movieNames;
+        }
+
+
+
     }
 }

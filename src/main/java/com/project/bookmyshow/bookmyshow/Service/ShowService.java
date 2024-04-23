@@ -93,5 +93,18 @@ public class ShowService
         return showList;
     }
 
+    public Integer getNumberOfAvailableSeats(Integer showId)
+    {
+        List<ShowSeat>showSeatList=showSeatRepository.findAllSeats(showId);
+        Integer count=0;
 
+        for(ShowSeat showSeat:showSeatList)
+        {
+            if(showSeat.isAvailable()==true)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
 }

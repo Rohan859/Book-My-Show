@@ -15,8 +15,13 @@ public interface MovieRepository extends JpaRepository<Movie,Integer>
     Movie findMovieByMovieName(String movieName);
 
 
+
+
     @Query(nativeQuery = true,value = "select * from movies where language = :movie_language")
     List<Movie>findListOfMovieByLanguage(String movie_language);
+
+    @Query(nativeQuery = true,value = "select movie_name from movies where language = :movie_language")
+    List<String>getListOfMovieByLanguage(String movie_language);
 
 
     @Query(nativeQuery = true,value = "select * from movies where genre = :genre")

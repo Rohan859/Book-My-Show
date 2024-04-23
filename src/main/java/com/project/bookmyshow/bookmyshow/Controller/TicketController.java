@@ -39,4 +39,11 @@ public class TicketController
         List<String>movieList=bookTicketService.findAllMovieListByUser(userId);
         return movieList;
     }
+
+    @GetMapping("/recommendation")
+    public List<String>recommendation(@RequestParam Integer userId)
+    {
+        List<String>movieList=bookTicketService.recommendation(userId);
+        return movieList;
+    }
 }
